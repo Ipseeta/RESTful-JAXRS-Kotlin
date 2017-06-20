@@ -71,7 +71,7 @@
                 </executions>
             </plugin>
         </plugins>
-		<finalName>myRetail</finalName>
+		<finalName>myRetailKotlin</finalName>
 	</build>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/asm/asm -->
