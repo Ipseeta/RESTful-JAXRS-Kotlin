@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType
  */
 object RESTfulJerseyClient {
 
-    private val webServiceURI = "http://localhost:8080/myRetail-0.0.1-SNAPSHOT/myRetail/products/"
+    private val webServiceURI = "http://localhost:8080/myRetailKotlin/myRetailKotlin/products/"
 
     @JvmStatic fun main(args: Array<String>) {
         val client = Client.create()
