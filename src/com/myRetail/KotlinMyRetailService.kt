@@ -22,7 +22,7 @@ import com.myRetail.model.Product
 @Path("/products")
 class KotlinMyRetailService {
 
-    internal var dao = MyRetailDAO()
+    private var dao = MyRetailDAO()
 
     @GET
     @Produces(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML)
@@ -37,7 +37,6 @@ class KotlinMyRetailService {
     /**
      * Get product details by product id
      * @param id request param
-     * *
      * @return product with 200 http status
      */
     @GET
@@ -65,7 +64,6 @@ class KotlinMyRetailService {
     /**
      * Find product name by its id
      * @param id
-     * *
      * @return name of the product
      */
     @GET
@@ -79,9 +77,7 @@ class KotlinMyRetailService {
     /**
      * To update product price we call this update method
      * @param id
-     * *
      * @param product
-     * *
      * @return
      */
     @PUT
@@ -89,9 +85,7 @@ class KotlinMyRetailService {
     @Consumes(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML)
     fun updatePrice(@PathParam("id") id: String, product: Product): res {
-        if (null == product.current_price) {
-            return res.status(400).entity("Please provide the product price").build()
-        }
+        if (null == product.current_price) return res.status(400).entity("Please provide the product price").build()
         val updatedProduct = dao.update(Integer.parseInt(id), product)
         return res.status(200).entity(updatedProduct).build()
     }
@@ -99,7 +93,6 @@ class KotlinMyRetailService {
     /**
      * Delete a price entry from mongodb
      * @param id
-     * *
      * @return
      */
     @DELETE

@@ -18,7 +18,7 @@ class GenericExceptionMapper : ExceptionMapper<Throwable> {
                     .build()
         } else {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(ErrorProps("Some error code, 500 or somthing", ex.message))
+                    .entity(ErrorProps("Some error code, 500 or something", ex.message))
                     .build()
         }
     }

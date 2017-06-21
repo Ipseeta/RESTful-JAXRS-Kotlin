@@ -23,7 +23,7 @@ object RESTfulJerseyClient {
         getByIdTest(webResource)
         getNameByIdTest(webResource)
         updatePriceTest(webResource)
-        deleteTest(webResource)
+        //deleteTest(webResource)
 
     }
 

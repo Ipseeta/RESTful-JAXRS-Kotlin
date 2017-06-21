@@ -10,9 +10,7 @@ import javax.ws.rs.ext.Provider
 @Provider
 class ProductSearchExceptionMapper : ExceptionMapper<ProductSearchException> {
 
-    override fun toResponse(ex: ProductSearchException): Response {
-        return Response.status(Response.Status.NOT_FOUND)
-                .entity(ErrorProps("404", ex.message))
-                .build()
-    }
+    override fun toResponse(ex: ProductSearchException): Response = Response.status(Response.Status.NOT_FOUND)
+            .entity(ErrorProps("404", ex.message))
+            .build()
 }

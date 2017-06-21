@@ -22,8 +22,6 @@ object Utility {
         return mongoClient
     }
 
-    fun closeDB(mongoClient: MongoClient) {
-        mongoClient.close()
-    }
+    fun closeDB(mongoClient: MongoClient) = mongoClient.close()
 
 }

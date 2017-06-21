@@ -19,14 +19,10 @@ class MyRetailDAO {
 
     fun findById(id: Int): Product? {
         val found = false
-        for (product in createDummyProducts()) {
-            if (id == product.id) {
-                return product
-            }
-        }
-        if (!found) {
-            throw ProductSearchException(bundle.getString("noproduct") + id)
-        }
+        createDummyProducts()
+                .filter { id == it.id }
+                .forEach { return it }
+        if (!found) throw ProductSearchException(bundle.getString("noproduct") + id)
         return null
     }
 
@@ -113,14 +109,10 @@ class MyRetailDAO {
 
     fun findNameById(id: Int): String? {
         val found = false
-        for (product in createDummyProducts()) {
-            if (id == product.id) {
-                return product.name
-            }
-        }
-        if (!found) {
-            throw GenericException(bundle.getString("generalMessage"))
-        }
+        createDummyProducts()
+                .filter { id == it.id }
+                .forEach { return it.name }
+        if (!found) throw GenericException(bundle.getString("generalMessage"))
         return ""
     }
 
@@ -138,9 +130,7 @@ class MyRetailDAO {
             val newProductCursor = collection.find(BasicDBObject().append("_id", product.id))
             price = getPrice(newProductCursor)
             product.current_price = price
-        } else {
-            throw GenericException(bundle.getString("generalMessage"))
-        }
+        } else throw GenericException(bundle.getString("generalMessage"))
         Utility.closeDB(mongoClient)
         return product
     }
